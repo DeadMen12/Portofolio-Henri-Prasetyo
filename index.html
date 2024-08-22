@@ -87,10 +87,10 @@
                                  <div class="col-md-6">
                                     <div class="social_icon">
                                        <ul>
-                                          <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                          <li><a href="https://www.facebook.com/edward.kenyway/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                                           <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                          <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                          <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                          <li><a href="https://www.linkedin.com/in/henri-prasetyo/"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                          <li><a href="https://www.instagram.com/2ndlthenri/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                        </ul>
                                     </div>
                                  </div>
@@ -166,13 +166,84 @@
                      </div>
                   </div>
                </div>
-            </section>
-            <div class="container">
-               <div class="video_bt">
-                  <div class="play_icon"><img src="images/play-icon.png"></div>
+               <section>
+                  <!-- Konten section lainnya -->
+               </section>
+               <div class="container">
+                  <div class="video_bt">
+                     <div class="play_icon" id="playButton">
+                        <img src="images/play-icon.png" alt="Play Icon">
+                     </div>
+                  </div>
                </div>
-            </div>
-         </div>
+               
+               <!-- Ganti elemen video dengan iframe untuk video YouTube -->
+               <iframe id="videoPlayer" width="320" height="240" style="display:none;" 
+                       src="https://www.youtube.com/embed/NyUTYwZe_l4?enablejsapi=1" 
+                       frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+               </iframe>
+               
+               <!-- JavaScript untuk membuat tombol play berfungsi -->
+               <script>
+                  document.getElementById('playButton').addEventListener('click', function() {
+                     var video = document.getElementById('videoPlayer');
+                     video.style.display = 'block';  // Tampilkan video
+                     var player = new YT.Player('videoPlayer', {
+                        events: {
+                           'onReady': function(event) {
+                              event.target.playVideo();  // Putar video saat iframe siap
+                           }
+                        }
+                     });
+               
+                     // Memasukkan video ke dalam mode full screen
+                     if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                     } else if (video.mozRequestFullScreen) { // Firefox
+                        video.mozRequestFullScreen();
+                     } else if (video.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                        video.webkitRequestFullscreen();
+                     } else if (video.msRequestFullscreen) { // IE/Edge
+                        video.msRequestFullscreen();
+                     }
+                  });
+               
+                  // Menyembunyikan video ketika keluar dari mode full screen
+                  document.addEventListener('fullscreenchange', function() {
+                     var video = document.getElementById('videoPlayer');
+                     if (!document.fullscreenElement) {
+                        video.style.display = 'none';
+                        video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                     }
+                  });
+               
+                  document.addEventListener('webkitfullscreenchange', function() {
+                     var video = document.getElementById('videoPlayer');
+                     if (!document.webkitFullscreenElement) {
+                        video.style.display = 'none';
+                        video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                     }
+                  });
+               
+                  document.addEventListener('mozfullscreenchange', function() {
+                     var video = document.getElementById('videoPlayer');
+                     if (!document.mozFullScreen) {
+                        video.style.display = 'none';
+                        video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                     }
+                  });
+               
+                  document.addEventListener('msfullscreenchange', function() {
+                     var video = document.getElementById('videoPlayer');
+                     if (!document.msFullscreenElement) {
+                        video.style.display = 'none';
+                        video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                     }
+                  });
+               </script>
+               
+               <!-- Tambahkan YouTube IFrame API -->
+               <script src="https://www.youtube.com/iframe_api"></script>               
          <!-- banner section end -->
       </div>
       <!-- header section end -->
