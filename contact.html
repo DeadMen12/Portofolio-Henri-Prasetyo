@@ -65,6 +65,7 @@
          </div>
       </div>
       <!-- header section end -->
+       
       <!-- contact section start -->
       <div class="contact_section layout_padding">
          <div class="container">
@@ -76,12 +77,15 @@
             <div class="contact_section_2">
                <div class="row">
                   <div class="col-md-12">
-                     <div class="mail_section_1">
+                     <form action="send_email.php" method="POST">
+                        <div class="mail_section_1">
                         <input type="text" class="mail_text" placeholder="Your Name" name="Your Name">
                         <input type="text" class="mail_text" placeholder="Your Email" name="Your Email">
                         <input type="text" class="mail_text" placeholder="Your Phone" name="Your Phone">
                         <textarea class="massage-bt" placeholder="Your Massage" rows="5" id="comment" name="Your Massage"></textarea>
-                        <div class="send_bt"><a href="#">Send Now</a></div>
+                        <div class="send_bt">
+                           <a href="mailto:henriprasetyo6@gmail.com?subject=Hello%20Henri&body=Hi%20Henri,%20I%20wanted%20to%20reach%20out%20to%20you%20regarding...">Send Now</a>
+                        </div>                        
                      </div>
                   </div>
                </div>
@@ -89,6 +93,64 @@
          </div>
       </div>
       <!-- contact section end -->
+
+      <!-- Toast Notification -->
+<div id="toast" class="toast">Pesan terkirim</div>
+
+<script>
+   document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Mencegah pengiriman form default
+      
+      // Kirim form menggunakan AJAX
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", this.action, true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      
+      var formData = new FormData(this);
+      var params = new URLSearchParams(formData).toString();
+
+      xhr.onreadystatechange = function() {
+         if (xhr.readyState == 4 && xhr.status == 200) {
+            showToast(); // Tampilkan toast notification setelah form berhasil dikirim
+         }
+      };
+      xhr.send(params);
+   });
+
+   function showToast() {
+      var toast = document.getElementById("toast");
+      toast.className = "toast show";
+      setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+   }
+</script>
+
+<style>
+   /* Toast Notification Styles */
+   .toast {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 16px;
+      position: fixed;
+      z-index: 1;
+      right: 20px;
+      top: 20px;
+      font-size: 17px;
+      opacity: 0;
+      transition: opacity 0.5s, top 0.5s;
+   }
+
+   .toast.show {
+      visibility: visible;
+      opacity: 1;
+      top: 40px;
+   }
+</style>
+<!-- EndToast Notification -->
+
       <!-- footer section start -->
       <div class="footer_section">
          <div class="container">
