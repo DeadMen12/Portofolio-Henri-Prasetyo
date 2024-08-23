@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Contact</title>
+      <title>About</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -68,63 +68,185 @@
 
 <!-- About start -->
 <div class="about-section">
-    <div class="container">
-       <div class="card">
-          <!-- Image on the left -->
-          <div class="card-image">
-             <!-- Menggunakan jalur relatif untuk gambar -->
-             <img src="images/img-des-1.png" alt="Your Image">
-          </div>
-          <!-- Description on the right -->
-          <div class="card-description">
-             <h2>About Me</h2>
-             <p>
-                As a Teknik Informatika graduate from Universitas Pamulang, I specialize in planning and developing effective test processes tailored to the unique needs of each project. My proficiency in Figma and strong grasp of user research enable me to contribute significantly to content planning, ensuring our software solutions meet both technical standards and user expectations.<br><br>
-                I am dedicated to merging strong design aesthetics with cutting-edge technological innovations, which drives my continuous exploration of emerging trends in the tech industry. My active engagement within the tech community reflects my commitment to staying at the forefront of industry advancements and contributing to the development of impactful, user-centric software solutions.
-             </p>
-          </div>
-       </div>
-    </div>
- </div>
- <!-- About end -->
+   <div class="container">
+      <div class="card">
+         <!-- Carousel container -->
+         <div class="carousel-container">
+            <div class="carousel">
+               <!-- Slide 1 -->
+               <div class="carousel-slide">
+                  <div class="card-description">
+                     <h2>About Me</h2>
+                     <p>
+                        As a Teknik Informatika graduate from Universitas Pamulang, I specialize in planning and developing effective test processes tailored to the unique needs of each project.
+                     </p>
+                  </div>
+                  <div class="card-image">
+                     <img src="images/img-des-1.png" alt="Image 1">
+                  </div>
+               </div>
+               <!-- Slide 2 -->
+               <div class="carousel-slide">
+                  <div class="card-description">
+                     <h2>Experience</h2>
+                     <p>
+                        Auto2000 Digiroom Project Experience
+
+                        <ul>
+                           <li><strong>Role:</strong> QA Engineer</li>
+                           <li><strong>Achievements:</strong>
+                               <ul>
+                                   <li>• Successfully completed all assigned tasks ahead of the deadline.</li>
+                                   <li>• Conducted comprehensive regression testing using Katalon Studio.</li>
+                                   <li>• Performed performance testing with Apache JMeter, ensuring the system could handle high traffic volumes.</li>
+                                   <li>• Executed manual testing to validate the functionality and user experience of the website.</li>
+                               </ul>
+                           </li>
+                       </ul>                       
+                       
+                     </p>
+                  </div>
+                  <div class="card-image">
+                     <img src="images/img-des-2.png" alt="Image 2">
+                  </div>
+               </div>
+               <!-- Slide 3 -->
+               <div class="carousel-slide">
+                  <div class="card-description">
+                     <h2>Skills</h2>
+                     <p>
+                        <ul>
+                           <li><strong>Katalon Studio:</strong> Proficient in using Katalon Studio for automation testing, with experience in designing and executing automated test scripts to ensure the quality and stability of web applications.</li>
+                           <li><strong>Apache JMeter:</strong> Skilled in performing performance testing with Apache JMeter, capable of creating and running load tests to evaluate system performance under various conditions, ensuring the application can handle high traffic volumes.</li>
+                           <li><strong>Bug Documentation:</strong> Adept at writing and documenting bugs using spreadsheets, including detailed descriptions, steps to reproduce, and severity levels to facilitate effective communication with development teams and ensure timely resolution.</li>
+                       </ul>
+                       
+                     </p>
+                  </div>
+                  <div class="card-image">
+                     <img src="images/img-des-3.png" alt="Image 3">
+                  </div>
+               </div>
+            </div>
+            <!-- Navigation buttons -->
+            <button class="carousel-prev">&#10094;</button>
+            <button class="carousel-next">&#10095;</button>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- About end -->
+
  
  <style>
-    .card {
-       display: flex;
-       max-width: 1200px;
-       background: #ffffff;
-       border-radius: 10px;
-       overflow: hidden;
-       box-shadow: 0 0 15px rgba(0,0,0,0.1);
-       flex-direction: row-reverse; /* Mengatur gambar di sebelah kiri dan deskripsi di sebelah kanan */
-    }
-    .card-image {
-       flex: 1;
-       display: flex;
-       justify-content: center;
-       align-items: center;
-    }
-    .card-image img {
-       width: 75%;
-       height: auto;
-       object-fit: cover;
-    }
-    .card-description {
-       flex: 1;
-       padding: 20px;
-    }
-    .card-description h2 {
-       font-size: 24px;
-       margin-bottom: 15px;
-    }
-    .card-description p {
-       font-size: 16px;
-       line-height: 1.6;
-       color: #333;
-    }
- </style>
+   .carousel-container {
+      position: relative;
+      max-width: 1200px;
+      margin: auto;
+      overflow: hidden;
+      display: flex;
+   }
+   
+   .carousel {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+   }
+   
+   .carousel-slide {
+      min-width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+   }
+   
+   .card-description {
+      flex: 1;
+      padding: 20px;
+   }
+   
+   .card-description h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+   }
+   
+   .card-description p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333;
+   }
+   
+   .card-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+   
+   .card-image img {
+      width: 75%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 8px;
+   }
+   
+   .carousel-prev,
+   .carousel-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+   }
+   
+   .carousel-prev {
+      left: 10px;
+   }
+   
+   .carousel-next {
+      right: 10px;
+   }
+   
+   .carousel-prev:hover,
+   .carousel-next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+   }
+    </style>
  
- 
+    <!-- Menambahkan Script JavaScript -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const carousel = document.querySelector('.carousel');
+          const slides = document.querySelectorAll('.carousel-slide');
+          const prevButton = document.querySelector('.carousel-prev');
+          const nextButton = document.querySelector('.carousel-next');
+          let currentIndex = 0;
+          const slideInterval = 10000; // 10 seconds
+
+          function updateCarousel() {
+              carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+          }
+
+          function showNextSlide() {
+              currentIndex = (currentIndex + 1) % slides.length;
+              updateCarousel();
+          }
+
+          function showPrevSlide() {
+              currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+              updateCarousel();
+          }
+
+          nextButton.addEventListener('click', showNextSlide);
+          prevButton.addEventListener('click', showPrevSlide);
+
+          setInterval(showNextSlide, slideInterval);
+      });
+  </script>
+    
+
 <!-- My Education start -->
 <div class="about-section">
     <div class="container">
