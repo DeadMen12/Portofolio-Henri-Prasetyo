@@ -66,7 +66,210 @@
       </div>
       <!-- header section end -->
 
-<!-- About start -->
+<div class="about-section">
+   <div class="container">
+      <div class="card">
+         <!-- Carousel container -->
+         <div class="carousel-container">
+            <div class="carousel">
+               <!-- Slide 1 -->
+               <div class="carousel-slide">
+                  <div class="card-image">
+                     <img src="images/img-des-2.png" alt="Your Image">
+                  </div>
+                  <div class="card-description">
+                     <h2>My Education</h2>
+                     <p>
+                        I graduated with a degree in Informatics Engineering from Universitas Pamulang in 2023. During my studies, I learned the basics of web and mobile programming. I am proficient in using tools such as Visual Studio Code, XAMPP, and spreadsheets to support my academic work.
+                     </p>
+                  </div>
+               </div>
+               <!-- Slide 2 -->
+               <div class="carousel-slide">
+                  <div class="card-image">
+                     <img src="images/img-des-1.png" alt="Image 1">
+                  </div>
+                  <div class="card-description">
+                     <h2>About Me</h2>
+                     <p>
+                        As a Teknik Informatika graduate from Universitas Pamulang, I specialize in planning and developing effective test processes tailored to the unique needs of each project.
+                     </p>
+                  </div>
+               </div>
+               <!-- Slide 3 -->
+               <div class="carousel-slide">
+                  <div class="card-image">
+                     <img src="images/img-des-3.png" alt="Image 3">
+                  </div>
+                  <div class="card-description">
+                     <h2>Skills</h2>
+                     <p>
+                        <ul>
+                           <li><strong>Katalon Studio:</strong> Proficient in using Katalon Studio for automation testing, with experience in designing and executing automated test scripts to ensure the quality and stability of web applications.</li>
+                           <li><strong>Apache JMeter:</strong> Skilled in performing performance testing with Apache JMeter, capable of creating and running load tests to evaluate system performance under various conditions, ensuring the application can handle high traffic volumes.</li>
+                           <li><strong>Bug Documentation:</strong> Adept at writing and documenting bugs using spreadsheets, including detailed descriptions, steps to reproduce, and severity levels to facilitate effective communication with development teams and ensure timely resolution.</li>
+                       </ul>
+                     </p>
+                  </div>
+               </div>
+            </div>
+            <!-- Navigation buttons -->
+            <button class="carousel-prev">&#10094;</button>
+            <button class="carousel-next">&#10095;</button>
+         </div>
+         <!-- Custom Dots -->
+         <div class="carousel-dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- About end -->
+
+<style>
+   .carousel-container {
+      position: relative;
+      max-width: 1200px;
+      margin: auto;
+      overflow: hidden;
+      display: flex;
+   }
+
+   .carousel {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+   }
+
+   .carousel-slide {
+      min-width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+   }
+
+   .card-description {
+      flex: 1;
+      padding: 20px;
+   }
+
+   .card-description h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+   }
+
+   .card-description p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333;
+   }
+
+   .card-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+
+   .card-image img {
+      width: 75%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 8px;
+   }
+
+   .carousel-prev,
+   .carousel-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+   }
+
+   .carousel-prev {
+      left: 10px;
+   }
+
+   .carousel-next {
+      right: 10px;
+   }
+
+   .carousel-prev:hover,
+   .carousel-next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+   }
+
+   /* Custom Dots */
+   .carousel-dots {
+      text-align: center;
+      margin-top: 20px;
+   }
+
+   .carousel-dots .dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 0 5px;
+      background-color: #f5f7b0;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+   }
+
+   .carousel-dots .dot.active {
+      background-color: rgb(243, 243, 125); /* Change active dot color to yellow */
+   }
+</style>
+
+<!-- JavaScript for Carousel Functionality -->
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+      const carousel = document.querySelector('.carousel');
+      const slides = document.querySelectorAll('.carousel-slide');
+      const prevButton = document.querySelector('.carousel-prev');
+      const nextButton = document.querySelector('.carousel-next');
+      const dots = document.querySelectorAll('.carousel-dots .dot');
+      let currentIndex = 0;
+      const slideInterval = 10000; // 10 seconds
+
+      function updateCarousel() {
+          carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+          dots.forEach((dot, index) => {
+              dot.classList.toggle('active', index === currentIndex);
+          });
+      }
+
+      function showNextSlide() {
+          currentIndex = (currentIndex + 1) % slides.length;
+          updateCarousel();
+      }
+
+      function showPrevSlide() {
+          currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+          updateCarousel();
+      }
+
+      dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+              currentIndex = index;
+              updateCarousel();
+          });
+      });
+
+      nextButton.addEventListener('click', showNextSlide);
+      prevButton.addEventListener('click', showPrevSlide);
+
+      setInterval(showNextSlide, slideInterval);
+   });
+</script>
+    
+
+<!-- My Education start -->
 <div class="about-section">
    <div class="container">
       <div class="card">
@@ -76,6 +279,18 @@
                <!-- Slide 1 -->
                <div class="carousel-slide">
                   <div class="card-description">
+                     <h2>My Education</h2>
+                     <p>
+                        I graduated with a degree in Informatics Engineering from Universitas Pamulang in 2023. During my studies, I learned the basics of web and mobile programming. I am proficient in using tools such as Visual Studio Code, XAMPP, and spreadsheets to support my academic work.
+                     </p>
+                  </div>
+                  <div class="card-image">
+                     <img src="images/img-des-2.png" alt="Your Image">
+                  </div>
+               </div>
+               <!-- Slide 2 -->
+               <div class="carousel-slide">
+                  <div class="card-description">
                      <h2>About Me</h2>
                      <p>
                         As a Teknik Informatika graduate from Universitas Pamulang, I specialize in planning and developing effective test processes tailored to the unique needs of each project.
@@ -83,31 +298,6 @@
                   </div>
                   <div class="card-image">
                      <img src="images/img-des-1.png" alt="Image 1">
-                  </div>
-               </div>
-               <!-- Slide 2 -->
-               <div class="carousel-slide">
-                  <div class="card-description">
-                     <h2>Experience</h2>
-                     <p>
-                        Auto2000 Digiroom Project Experience
-
-                        <ul>
-                           <li><strong>Role:</strong> QA Engineer</li>
-                           <li><strong>Achievements:</strong>
-                               <ul>
-                                   <li>• Successfully completed all assigned tasks ahead of the deadline.</li>
-                                   <li>• Conducted comprehensive regression testing using Katalon Studio.</li>
-                                   <li>• Performed performance testing with Apache JMeter, ensuring the system could handle high traffic volumes.</li>
-                                   <li>• Executed manual testing to validate the functionality and user experience of the website.</li>
-                               </ul>
-                           </li>
-                       </ul>                       
-                       
-                     </p>
-                  </div>
-                  <div class="card-image">
-                     <img src="images/img-des-2.png" alt="Image 2">
                   </div>
                </div>
                <!-- Slide 3 -->
@@ -120,7 +310,6 @@
                            <li><strong>Apache JMeter:</strong> Skilled in performing performance testing with Apache JMeter, capable of creating and running load tests to evaluate system performance under various conditions, ensuring the application can handle high traffic volumes.</li>
                            <li><strong>Bug Documentation:</strong> Adept at writing and documenting bugs using spreadsheets, including detailed descriptions, steps to reproduce, and severity levels to facilitate effective communication with development teams and ensure timely resolution.</li>
                        </ul>
-                       
                      </p>
                   </div>
                   <div class="card-image">
@@ -132,13 +321,18 @@
             <button class="carousel-prev">&#10094;</button>
             <button class="carousel-next">&#10095;</button>
          </div>
+         <!-- Custom Dots -->
+         <div class="carousel-dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+         </div>
       </div>
    </div>
 </div>
-<!-- About end -->
+<!-- My Education End -->
 
- 
- <style>
+<style>
    .carousel-container {
       position: relative;
       max-width: 1200px;
@@ -146,49 +340,49 @@
       overflow: hidden;
       display: flex;
    }
-   
+
    .carousel {
       display: flex;
       transition: transform 0.5s ease-in-out;
    }
-   
+
    .carousel-slide {
       min-width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
    }
-   
+
    .card-description {
       flex: 1;
       padding: 20px;
    }
-   
+
    .card-description h2 {
       font-size: 24px;
       margin-bottom: 15px;
    }
-   
+
    .card-description p {
       font-size: 16px;
       line-height: 1.6;
       color: #333;
    }
-   
+
    .card-image {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
    }
-   
+
    .card-image img {
       width: 75%;
       height: auto;
       object-fit: cover;
       border-radius: 8px;
    }
-   
+
    .carousel-prev,
    .carousel-next {
       position: absolute;
@@ -200,125 +394,83 @@
       padding: 10px;
       cursor: pointer;
    }
-   
+
    .carousel-prev {
       left: 10px;
    }
-   
+
    .carousel-next {
       right: 10px;
    }
-   
+
    .carousel-prev:hover,
    .carousel-next:hover {
       background-color: rgba(0, 0, 0, 0.8);
    }
-    </style>
- 
-    <!-- Menambahkan Script JavaScript -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          const carousel = document.querySelector('.carousel');
-          const slides = document.querySelectorAll('.carousel-slide');
-          const prevButton = document.querySelector('.carousel-prev');
-          const nextButton = document.querySelector('.carousel-next');
-          let currentIndex = 0;
-          const slideInterval = 10000; // 10 seconds
 
-          function updateCarousel() {
-              carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-          }
+   /* Custom Dots */
+   .carousel-dots {
+      text-align: center;
+      margin-top: 20px;
+   }
 
-          function showNextSlide() {
-              currentIndex = (currentIndex + 1) % slides.length;
+   .carousel-dots .dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 0 5px;
+      background-color: #f5f7b0;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+   }
+
+   .carousel-dots .dot.active {
+      background-color: rgb(243, 243, 125); /* Change active dot color to yellow */
+   }
+</style>
+
+<!-- JavaScript for Carousel Functionality -->
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+      const carousel = document.querySelector('.carousel');
+      const slides = document.querySelectorAll('.carousel-slide');
+      const prevButton = document.querySelector('.carousel-prev');
+      const nextButton = document.querySelector('.carousel-next');
+      const dots = document.querySelectorAll('.carousel-dots .dot');
+      let currentIndex = 0;
+      const slideInterval = 10000; // 10 seconds
+
+      function updateCarousel() {
+          carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+          dots.forEach((dot, index) => {
+              dot.classList.toggle('active', index === currentIndex);
+          });
+      }
+
+      function showNextSlide() {
+          currentIndex = (currentIndex + 1) % slides.length;
+          updateCarousel();
+      }
+
+      function showPrevSlide() {
+          currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+          updateCarousel();
+      }
+
+      dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+              currentIndex = index;
               updateCarousel();
-          }
-
-          function showPrevSlide() {
-              currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-              updateCarousel();
-          }
-
-          nextButton.addEventListener('click', showNextSlide);
-          prevButton.addEventListener('click', showPrevSlide);
-
-          setInterval(showNextSlide, slideInterval);
+          });
       });
-  </script>
-    
 
-<!-- My Education start -->
-<div class="about-section">
-    <div class="container">
-       <div class="card-container">
-          <!-- Image on the left -->
-          <div class="card-image">
-             <!-- Menggunakan jalur relatif untuk gambar -->
-             <img src="images/img-des-2.png" alt="Your Image">
-          </div>
-          <!-- Description on the right -->
-          <div class="card-description">
-             <h2>My Education</h2>
-             <p>
-                I graduated with a degree in Informatics Engineering from Universitas Pamulang in 2023. During my studies, I learned the basics of web and mobile programming. I am proficient in using tools such as Visual Studio Code, XAMPP, and spreadsheets to support my academic work
-             </p>
-          </div>
-       </div>
-    </div>
-</div>
-<!-- My Education end -->
+      nextButton.addEventListener('click', showNextSlide);
+      prevButton.addEventListener('click', showPrevSlide);
 
- 
- <style>
-    .about-section {
-        padding: 30px;
-    }
-    
-    .container {
-        display: flex;
-        justify-content: center;
-    }
-    
-    .card-container {
-        display: flex;
-        align-items: center;
-        gap: 20px; /* Spasi antara gambar dan deskripsi */
-        max-width: 1200px; /* Maksimal lebar card */
-        background-color: #f9f9f9; /* Warna latar belakang card */
-        border-radius: 8px; /* Opsional: Memberikan sudut pada card */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Opsional: Memberikan efek bayangan */
-    }
-    
-    .card-image {
-        flex: 0 0 512px; /* Memastikan gambar tetap pada ukuran 512px */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .card-image img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px; /* Opsional: Memberikan sedikit sudut pada gambar */
-    }
-    
-    .card-description {
-        flex: 1;
-        padding: 20px;
-    }
-    
-    .card-description h2 {
-        font-size: 24px;
-        margin-bottom: 15px;
-    }
-    
-    .card-description p {
-        font-size: 16px;
-        line-height: 1.6;
-        color: #333;
-    }
-    
- </style>
+      setInterval(showNextSlide, slideInterval);
+   });
+</script>
 
       <!-- footer section start -->
       <div class="footer_section">
