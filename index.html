@@ -168,84 +168,232 @@
                <section>
                   <!-- Konten section lainnya -->
                </section>
-               <div class="container">
-                  <div class="video_bt">
-                     <div class="play_icon" id="playButton">
-                        <img src="images/play-icon.png" alt="Play Icon">
-                     </div>
+               <div class="container-fluid">
+                  <div class="row">
+                      <div id="ms-container">
+                          <label for="ms-download">
+                              <div class="ms-content">
+                                  <div class="ms-content-inside">
+                                      <input type="checkbox" id="ms-download" />
+                                      <div class="ms-line-down-container">
+                                          <div class="ms-line-down"></div>
+                                      </div>
+                                      <div class="ms-line-point"></div>
+                                  </div>
+                              </div>
+                          </label>
+                      </div>
                   </div>
-               </div>
-               
-               <!-- Ganti elemen video dengan iframe untuk video YouTube -->
-               <iframe id="videoPlayer" width="320" height="240" style="display:none;" 
-                       src="https://www.youtube.com/embed/NyUTYwZe_l4?enablejsapi=1" 
-                       frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-               </iframe>
-               
-               <!-- JavaScript untuk membuat tombol play berfungsi -->
-               <script>
-                  document.getElementById('playButton').addEventListener('click', function() {
-                     var video = document.getElementById('videoPlayer');
-                     video.style.display = 'block';  // Tampilkan video
-                     var player = new YT.Player('videoPlayer', {
-                        events: {
-                           'onReady': function(event) {
-                              event.target.playVideo();  // Putar video saat iframe siap
-                           }
-                        }
-                     });
-               
-                     // Memasukkan video ke dalam mode full screen
-                     if (video.requestFullscreen) {
-                        video.requestFullscreen();
-                     } else if (video.mozRequestFullScreen) { // Firefox
-                        video.mozRequestFullScreen();
-                     } else if (video.webkitRequestFullscreen) { // Chrome, Safari and Opera
-                        video.webkitRequestFullscreen();
-                     } else if (video.msRequestFullscreen) { // IE/Edge
-                        video.msRequestFullscreen();
-                     }
-                  });
-               
-                  // Menyembunyikan video ketika keluar dari mode full screen
-                  document.addEventListener('fullscreenchange', function() {
-                     var video = document.getElementById('videoPlayer');
-                     if (!document.fullscreenElement) {
-                        video.style.display = 'none';
-                        video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-                     }
-                  });
-               
-                  document.addEventListener('webkitfullscreenchange', function() {
-                     var video = document.getElementById('videoPlayer');
-                     if (!document.webkitFullscreenElement) {
-                        video.style.display = 'none';
-                        video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-                     }
-                  });
-               
-                  document.addEventListener('mozfullscreenchange', function() {
-                     var video = document.getElementById('videoPlayer');
-                     if (!document.mozFullScreen) {
-                        video.style.display = 'none';
-                        video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-                     }
-                  });
-               
-                  document.addEventListener('msfullscreenchange', function() {
-                     var video = document.getElementById('videoPlayer');
-                     if (!document.msFullscreenElement) {
-                        video.style.display = 'none';
-                        video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-                     }
-                  });
-               </script>
-               
-               <!-- Tambahkan YouTube IFrame API -->
-               <script src="https://www.youtube.com/iframe_api"></script>               
-         <!-- banner section end -->
-      </div>
+              </div>
+              
+              <script>
+               document.getElementById('ms-download').addEventListener('change', function () {
+                   if (this.checked) {
+                       // Set the animation duration time to match the end of the animation
+                       const animationDuration = 4000; // 4 seconds or match your total animation time
+           
+                       // Replace with your Google Drive file ID
+                       const fileId = 'your-google-drive-file-id';
+                       const downloadUrl = `https://drive.google.com/file/d/1tkTSEaXhG-yRVLK-O-0UnFtr3zyiyCWo/view?usp=drive_link=${fileId}`;
+           
+                       // Trigger the download after the animation completes
+                       setTimeout(() => {
+                           window.location.href = downloadUrl;
+           
+                           // Reset the checkbox after download
+                           document.getElementById('ms-download').checked = false;
+                       }, animationDuration);
+                   }
+               });
+           </script>
+
+              <style>
+               body {
+                   width: 100%;
+                   height: 100%;
+                   margin: 0;
+                   padding: 0;
+               }
+           
+               #ms-container {
+                   width: 100%;
+                   height: 100vh;
+                   background: transparent;
+               }
+           
+               .ms-content {
+                   position: absolute;
+                   width: 125px;
+                   height: 125px;
+                   bottom: -135px;
+                   left: 135px;
+                   border: 5px solid #2ea4f2;
+                   border-radius: 50%;
+               }
+           
+               .ms-content-inside {
+                   width: 100%;
+                   height: 100%;
+                   position: relative;
+               }
+           
+               .ms-line-down-container {
+                   position: absolute;
+                   top: 0;
+                   left: 0;
+                   right: 0;
+                   bottom: 0;
+                   transform: rotate(0deg);
+                   transition: transform 0s ease;
+               }
+           
+               #ms-download {
+                   display: none;
+               }
+           
+               #ms-download:checked ~ .ms-line-down-container {
+                   transform: rotate(-360deg);
+                   transition: transform 1.5s ease 1.25s;
+               }
+           
+               .ms-line-down {
+                   position: absolute;
+                   top: 0;
+                   right: 0;
+                   left: 0;
+                   bottom: 0;
+                   margin: auto;
+                   width: 5px;
+                   height: 62px;
+                   background: #f5c729;
+                   border-radius: 25px;
+                   transition: height .5s ease;
+               }
+           
+               #ms-download:checked ~ .ms-line-down-container .ms-line-down {
+                   height: 5px;
+                   top: -10px;
+                   animation: ms-bounce .5s forwards .55s;
+               }
+           
+               #ms-download:checked ~ .ms-line-down-container .ms-line-down:before {
+                   content: '';
+                   position: absolute;
+                   top: 0;
+                   left: -47px;
+                   right: 0;
+                   bottom: 0;
+                   width: 100px;
+                   height: 100px;
+                   border: 5px solid transparent;
+                   border-radius: 50%;
+                   animation: ms-border-fill .5s forwards 3s;
+               }
+           
+               .ms-line-point {
+                   position: absolute;
+                   top: 0;
+                   left: 0;
+                   right: 0;
+                   bottom: 0;
+                   margin: auto;
+                   width: 29px;
+                   height: 65px;
+                   transition: height .15s ease .45s;
+               }
+           
+               #ms-download:checked ~ .ms-line-point {
+                   height: 30px;
+               }
+           
+               #ms-download:checked ~ .ms-line-point:before {
+                   transform: rotate(90deg);
+                   right: -5px;
+                   animation: ms-check-right .25s forwards 3s;
+               }
+           
+               #ms-download:checked ~ .ms-line-point:after {
+                   transform: rotate(-90deg);
+                   left: -5px;
+                   animation: ms-check-left .25s forwards 3s;
+               }
+           
+               .ms-line-point:before,
+               .ms-line-point:after {
+                   content: '';
+                   position: absolute;
+                   width: 5px;
+                   height: 37px;
+                   bottom: -5px;
+                   background: #f5c729;
+                   border-radius: 25px;
+                   transition: transform .15s ease .47s, left .15s ease .47s, right .15s ease .47s;
+               }
+           
+               .ms-line-point:before {
+                   right: 0px;
+                   transform: rotate(45deg);
+               }
+           
+               .ms-line-point:after {
+                   left: 0px;
+                   transform: rotate(-45deg);
+               }
+           
+               @keyframes ms-bounce {
+                   0% {
+                       top: -10px;
+                   }
+                   25% {
+                       top: -125px;
+                   }
+                   50% {
+                       top: -138px;
+                   }
+                   100% {
+                       top: -95px;
+                   }
+               }
+           
+               @keyframes ms-check-left {
+                   0% {
+                       transform: rotate(-90deg);
+                       left: -5px;
+                       height: 37px;
+                   }
+                   100% {
+                       transform: rotate(-45deg);
+                       left: 0px;
+                       height: 22px;
+                   }
+               }
+           
+               @keyframes ms-check-right {
+                   0% {
+                       transform: rotate(90deg);
+                       right: -5px;
+                       height: 37px;
+                       bottom: -5px;
+                   }
+                   100% {
+                       transform: rotate(45deg);
+                       right: 5px;
+                       height: 40px;
+                       bottom: -7px;
+                   }
+               }
+           
+               @keyframes ms-border-fill {
+                   0% {
+                       border: 5px solid transparent;
+                   }
+                   100% {
+                       border: 5px solid #f5c729;
+                   }
+               }
+           </style>
       <!-- header section end -->
+
       <!-- services section start -->
       <div class="services_section layout_padding">
          <div class="container">
