@@ -208,6 +208,41 @@
            </script>
 
               <style>
+
+               label[for="ms-download"] {
+                  cursor: pointer; /* Ubah kursor menjadi pointer */
+              }
+              
+              /* General Styles */
+              body {
+                  width: 100%;
+                  height: 100%;
+                  margin: 0;
+                  padding: 0;
+              }
+              
+              #ms-container {
+                  width: 100%;
+                  height: 100vh;
+                  background: transparent;
+              }
+              
+              .ms-content {
+                  position: absolute;
+                  width: 125px;
+                  height: 125px;
+                  bottom: -135px;
+                  left: 135px;
+                  border: 5px solid #2ea4f2;
+                  border-radius: 50%;
+              }
+              
+              .ms-content-inside {
+                  width: 100%;
+                  height: 100%;
+                  position: relative;
+              }
+
                body {
                    width: 100%;
                    height: 100%;
@@ -439,7 +474,6 @@
          </div>
       </div>
       <!-- services section end -->
-
        
       <!-- contact section start -->
       <div class="contact_section layout_padding">
@@ -547,13 +581,10 @@
       <div class="location_text">
          <ul>
             <li>
-               <a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+               <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
             </li>
             <li>
-               <a href="#"><i class="fa fa-phone" aria-hidden="true"></i></a>
-            </li>
-            <li>
-               <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+               <a href="https://mail.google.com/mail/?view=cm&fs=1&to=henriprasetyo6@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a>
             </li>
          </ul>
       </div>
